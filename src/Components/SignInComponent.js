@@ -37,7 +37,7 @@ const SignInComponent = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:3001/signin`, {
+      const response = await fetch(`https://public.lazybluffer.online/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

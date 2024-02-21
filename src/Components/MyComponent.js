@@ -18,7 +18,7 @@ const MyComponent = () => {
         if (!token) {
           throw new Error("Token not found");
         }
-        const response = await fetch("http://localhost:3001/findAll", {
+        const response = await fetch("https://public.lazybluffer.online/findAll", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const MyComponent = () => {
                     </p>
                     <hr/>
                     <img
-                      src={`http://localhost:3001/${item.nfile}`}
+                      src={`https://public.lazybluffer.online/${item.nfile}`}
                       alt="img"
                       className="cimage"
                     />

@@ -13,7 +13,7 @@ const BlogPage = () => {
         if (!token) {
           throw new Error("Token not found");
         }
-        const response = await fetch("http://localhost:3001/findAll", {
+        const response = await fetch("https://public.lazybluffer.online/findAll", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const BlogPage = () => {
                 {data.map((item) => (
                   <div className="w-75">
                     <img
-                      src={`http://localhost:3001/${item.nfile}`}
+                      src={`https://public.lazybluffer.online/${item.nfile}`}
                       alt="img"
                     />
                     <h4>{item.name}</h4>

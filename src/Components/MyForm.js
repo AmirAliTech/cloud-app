@@ -57,7 +57,7 @@ const MyForm = () => {
       formDataToSend.append("content", content);
       formDataToSend.append("nfile", formData.nfile);
 
-      const response = await fetch("http://localhost:3001/enterdata", {
+      const response = await fetch("https://public.lazybluffer.online/enterdata", {
         method: "POST",
         body: formDataToSend,
         headers: {

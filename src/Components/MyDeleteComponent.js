@@ -17,7 +17,7 @@ const MyDeleteComponent = ({ itemId, onUpdate }) => {
       if (window.confirm('Are you sure you want to delete this item?')) {
         try {
           const response = await fetch(
-            `http://localhost:3001/itemremove/${itemId}`,
+            `https://public.lazybluffer.online/itemremove/${itemId}`,
             {
               method: "DELETE",
               headers: {

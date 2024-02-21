@@ -17,7 +17,7 @@ const UpdateDataComponent = () => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await fetch(`http://localhost:3001/findOne/${uid}`, {
+        const response = await fetch(`https://public.lazybluffer.online/findOne/${uid}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const UpdateDataComponent = () => {
         formData.append("nfile", file);
       }
 
-      const response = await fetch(`http://localhost:3001/updatedata/${uid}`, {
+      const response = await fetch(`https://public.lazybluffer.online/updatedata/${uid}`, {
         method: "PUT",
         body: formData,
       });
@@ -155,7 +155,7 @@ const UpdateDataComponent = () => {
               onChange={handleFileChange}
               className="updatefile"
             />
-            <img src={`http://localhost:3001/${file}`}
+            <img src={`https://public.lazybluffer.online/${file}`}
               alt="img"
               className="cimage" />
           </div>
