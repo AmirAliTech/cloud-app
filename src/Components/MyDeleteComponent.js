@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyDeleteComponent = ({ itemId, onUpdate }) => {
   const [deleteStatus, setDeleteStatus] = useState(null);
@@ -13,37 +15,34 @@ const MyDeleteComponent = ({ itemId, onUpdate }) => {
       return;
     }
 
-    
-      if (window.confirm('Are you sure you want to delete this item?')) {
-        try {
-          const response = await fetch(
-            `https://public.lazybluffer.online/itemremove/${itemId}`,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-              },
-            }
-          );
-    
-          if (response.ok) {
-            setDeleteStatus("Data deleted successfully");
-            onUpdate();
-            navigate("/find");
-          } else if (response.status === 404) {
-            setDeleteStatus("No data found");
-          } else {
-            setDeleteStatus("Failed to delete data");
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      try {
+        const response = await fetch(
+          `https://public.lazybluffer.online/itemremove/${itemId}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+            },
           }
-        } catch (error) {
-          console.error("Error:", error.message);
-          setDeleteStatus("Internal Server Error");
+        );
+    
+        if (response.ok) {
+          setDeleteStatus("Data deleted successfully");
+          onUpdate();
+          navigate("/find");
+          toast.success("Deleted Successfully");
+        } else if (response.status === 404) {
+          setDeleteStatus("No data found");
+        } else {
+          setDeleteStatus("Failed to delete data");
         }
+      } catch (error) {
+        console.error("Error:", error.message);
+        setDeleteStatus("Internal Server Error");
       }
-
-
-   
+    }
   };
 
   return (

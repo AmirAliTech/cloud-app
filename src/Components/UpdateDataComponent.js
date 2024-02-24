@@ -6,6 +6,7 @@ const UpdateDataComponent = () => {
   const editor = useRef(null);
   const { uid } = useParams();
   const [title, setTitle] = useState("");
+  const [trending, setTrending] = useState(false);
   const [desc, setDesc] = useState("");
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
@@ -28,6 +29,7 @@ const UpdateDataComponent = () => {
           const data = await response.json();
 
           setTitle(data.title);
+          setTrending(data.trending);
           setDesc(data.desc);
           setEmail(data.email);
           setContent(data.content);
@@ -46,6 +48,7 @@ const UpdateDataComponent = () => {
     try {
       const formData = new FormData();
       formData.append("title", title);
+      formData.append("trending", trending);
       formData.append("desc", desc);
       formData.append("email", email);
       formData.append("content", content);
@@ -60,7 +63,7 @@ const UpdateDataComponent = () => {
 
       if (response.ok) {
         setUpdateStatus("Data updated successfully");
-        const expirationTime = 60 * 10000;
+        const expirationTime = 60 * 60000;
         setTimeout(() => {
           localStorage.removeItem("token");
         }, expirationTime);
@@ -77,11 +80,14 @@ const UpdateDataComponent = () => {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
 
     switch (name) {
       case "name":
         setTitle(value);
+        break;
+      case "trending":
+        setTrending(checked);
         break;
       case "desc":
         setDesc(value);
@@ -106,6 +112,11 @@ const UpdateDataComponent = () => {
     <>
       {localStorage.getItem("token") ? (
         <div className="form1">
+          <label htmlFor="trending" className="w-100 d-flex align-items-center">
+            Trending
+            <input type="checkbox" id="trending" name="trending" className="trending-box" checked={trending} onChange={handleChange} />
+            {console.log(trending)}
+          </label>
           <br />
           <label>
             Name:

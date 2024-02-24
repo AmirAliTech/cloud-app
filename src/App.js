@@ -7,6 +7,7 @@ import UpdateDataComponent from "./Components/UpdateDataComponent";
 import SignInComponent from "./Components/SignInComponent";
 import PageNot from "./Components/PageNot";
 import BlogPage from "./Components/BlogPage";
+import SingleNews from "./Components/SingleNews";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/update/:uid" element={<UpdateDataComponent />} />
         <Route exact path="/login" element={<SignInComponent />} />
         <Route exact path="/blogpage" element={<BlogPage />} />
+        <Route exact path="/singlenews/:newsid" element={<SingleNews />} />
         <Route exact path="*" element={<PageNot />} />
       </Routes>
     </BrowserRouter>

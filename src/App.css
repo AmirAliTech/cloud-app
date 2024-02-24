@@ -1,74 +1,78 @@
-body{
+body {
   background-color: rgb(236, 246, 248);
 }
 
-.cursorpointer{
+.cursorpointer {
   cursor: pointer;
 }
 
-.burger{
+.burger {
   font-size: 50px;
   position: absolute;
   margin: 20px 30px;
 }
 
-.list{
+.list {
   list-style: none;
   font-weight: bold;
   margin: 20px 0px;
   padding: 10px 0px;
 }
 
-.bg-danger{
+.bg-danger {
   background-color: red;
 }
 
-.form{
+.form {
   width: 99%;
   height: 100vh;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.form form{
+.form form {
   width: 50%;
 }
-.form form input{
+
+.form form input {
   width: 100%;
   outline: none;
   padding: 10px 0px;
-  padding-left: 5px ;
+  padding-left: 5px;
 }
-.form form textarea{
+
+.form form textarea {
   width: 100%;
   border-radius: 15px;
   outline: none;
   padding-left: 10px;
 }
 
-.btn1{
+.btn1 {
   width: 20% !important;
   padding: 10px 0px;
   cursor: pointer;
 }
 
-.form1{
+.form1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
-.form1 input{
+
+.form1 input {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 10px 0px;
   border-radius: 10px;
 }
-.form1 textarea{
+
+.form1 textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,13 +80,13 @@ body{
   border-radius: 10px;
 }
 
-.form1 label{
+.form1 label {
   display: flex;
   width: 50%;
   flex-direction: column;
 }
 
-ul{
+ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -90,7 +94,7 @@ ul{
   justify-content: center;
 }
 
-li{
+li {
   display: flex;
   justify-content: space-between;
   width: 80%;
@@ -102,16 +106,26 @@ li{
 
 
 
-.updateDelete{
-  display: flex ;
+.updateDelete {
+  display: flex;
   gap: 20px;
 }
 
-.cimage{
+.cimage {
   width: 100px;
 }
-.updatefile{
+
+.updatefile {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.trending-box {
+  width: 51px !important;
+  height: 32px !important;
+}
+
+.max-img-width{
+  max-height: 200px;
 }

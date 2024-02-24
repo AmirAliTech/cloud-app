@@ -43,7 +43,7 @@ const MyComponent = () => {
     };
 
     fetchData();
-  }, [shouldUpdate]); 
+  }, [shouldUpdate]);
 
   const handleUpdate = () => {
     setShouldUpdate(!shouldUpdate);
@@ -60,38 +60,30 @@ const MyComponent = () => {
             ) : error ? (
               <p>{error}</p>
             ) : (
-              <ul>
-                {data.map((item) => (
-                  <li key={item._id} className="list d-flex flex-column">
-                    <p>
-                      <strong>Title:</strong> {item.title} <hr /> <strong>Description:</strong>
-                      {item.desc} <hr/> <strong>Email:</strong> {item.email}<hr/>
-                      <strong>Content:</strong> <hr/> <div dangerouslySetInnerHTML={{ __html: item.content }}></div> <hr className=""/>
-                      <strong>Date:</strong> {item.date}
-                    </p>
-                    <hr/>
-                    <img
-                      src={`https://public.lazybluffer.online/${item.nfile}`}
-                      alt="img"
-                      className="cimage"
-                    />
-                    <hr/>
-                    <div className="updateDelete d-flex justify-content-start w-100 ">
-                      <MyDeleteComponent
-                        itemId={item._id}
-                        onUpdate={handleUpdate} 
-                      />
-                      <Link
-                        to={`/update/${item._id}`}
-                        className="updatebtn1 btn btn-primary text-nowrap "
-                      >
-                        Update
-                      </Link>
+              <div className="container my-3">
+                <div className="row">
+                  {data.map((item) => (
+                    <div key={item._id} className="col-3">
+                      <div className="card" style={{ width: "18rem" }}>
+                        <img src={`https://public.lazybluffer.online/${item.nfile}`} className="card-img-top max-img-width" alt={item.title}  />
+                        <div className="card-body">
+                          <h5 className="d-flex align-items-center ">
+                            Trending: {item.trending ?(<div className="text-primary">true</div>):(<div className="text-danger">false</div>)}
+                          </h5>
+                          <h5 >
+                            Category: {item.category ? (<div className="text-primary">{item.category}</div>):(<div className="text-danger">no Category define</div>)}
+                          </h5>
+                          <h5 className="card-title">{item.title}</h5>
+                          <p className="card-text">{item.desc}</p>
+                          <Link to={`/update/${item._id}`} className="btn btn-primary my-1 mx-1  ">update</Link>
+                          <Link to={`/singlenews/${item._id}`} className="btn btn-primary my-1 ">view</Link>
+                          <MyDeleteComponent itemId={item._id} onUpdate={handleUpdate} />
+                        </div>
+                      </div>
                     </div>
-                    <hr/>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
             )}
           </div>
         </>
