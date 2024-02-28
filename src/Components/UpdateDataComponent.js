@@ -6,6 +6,7 @@ const UpdateDataComponent = () => {
   const editor = useRef(null);
   const { uid } = useParams();
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [trending, setTrending] = useState(false);
   const [desc, setDesc] = useState("");
   const [email, setEmail] = useState("");
@@ -29,11 +30,13 @@ const UpdateDataComponent = () => {
           const data = await response.json();
 
           setTitle(data.title);
+          setCategory(data.category);
           setTrending(data.trending);
           setDesc(data.desc);
           setEmail(data.email);
           setContent(data.content);
           setFile(data.nfile);
+          console.log(data)
         } else {
         }
       } catch (error) {
@@ -48,6 +51,7 @@ const UpdateDataComponent = () => {
     try {
       const formData = new FormData();
       formData.append("title", title);
+      formData.append("category", category);
       formData.append("trending", trending);
       formData.append("desc", desc);
       formData.append("email", email);
@@ -86,6 +90,9 @@ const UpdateDataComponent = () => {
       case "name":
         setTitle(value);
         break;
+      case "category":
+        setCategory(value);
+        break;
       case "trending":
         setTrending(checked);
         break;
@@ -119,11 +126,21 @@ const UpdateDataComponent = () => {
           </label>
           <br />
           <label>
-            Name:
+            Title:
             <input
               type="text"
               name="title"
               value={title}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Category:
+            <input
+              type="text"
+              name="category"
+              value={category}
               onChange={handleChange}
             />
           </label>

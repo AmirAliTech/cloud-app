@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../src/App.css";
 import MyComponent from "./Components/MyComponent";
@@ -12,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => (
-  <div className="app">
+  <div className="app d-flex ">
     <BrowserRouter>
       <ToastContainer />
       <Routes>

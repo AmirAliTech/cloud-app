@@ -61,10 +61,10 @@ const MyComponent = () => {
               <p>{error}</p>
             ) : (
               <div className="container my-3">
-                <div className="row">
+                <div className="w-100">
                   {data.map((item) => (
-                    <div key={item._id} className="col-3">
-                      <div className="card" style={{ width: "18rem" }}>
+                    <div key={item._id} className="w-25">
+                      <div className="d-flex flex-column  border-1" style={{ width: "18rem" }}>
                         <img src={`https://public.lazybluffer.online/${item.nfile}`} className="card-img-top max-img-width" alt={item.title}  />
                         <div className="card-body">
                           <h5 className="d-flex align-items-center ">
