@@ -87,7 +87,7 @@ const SingleNews = () => {
                                 <h1>Title</h1>
                                 <p>{data.title}</p>
                                 <h1>Category</h1>
-                                <p>{data.category ? (<div>data.category</div>) : (<div>no category define</div>)}</p>
+                                <p>{data.category ? (<div>{data.category}</div>) : (<div>no category define</div>)}</p>
                                 <h1>Description</h1>
                                 <p>{data.desc}</p>
                                 <h1>Content</h1>
