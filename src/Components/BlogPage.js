@@ -36,6 +36,8 @@ const BlogPage = () => {
     fetchData();
   }, []);
 
+  
+
   return (
     <>
       {localStorage.getItem("token") ? (

@@ -18,11 +18,29 @@ const MyForm = () => {
     nfile: null,
   });
 
+ 
+
   useEffect(() => {
-    const navigatetoken = localStorage.getItem("token");
-    if (!navigatetoken) {
-      navigate('/login');
-    }
+    const fetchToken = async () => {
+      const navigatetoken = localStorage.getItem("token");
+      try {
+        const response = await fetch('http://localhost:3001/gettoken', {
+          headers: {
+            Authorization: navigatetoken,
+          },
+        });
+        if (!response.ok) {
+          console.log('Failed to fetch token');
+          navigate('/login');
+        }
+        const data = await response.text();
+        console.log('Token verification response:', data);
+      } catch (error) {
+        console.error('Error fetching token:', error);
+      }
+    };
+
+    fetchToken();
   }, [navigate]);
 
   const handleReset = () => {
@@ -107,7 +125,7 @@ const MyForm = () => {
             <input type="checkbox" id="trending" name="trending" className="trending-box" checked={formData.trending} onChange={handleChange} />
             {console.log(formData.trending)}
           </label>
-          <br/>
+          <br />
           <label htmlFor="title">Title:</label>
           <br />
           <input

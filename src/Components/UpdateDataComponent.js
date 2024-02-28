@@ -47,6 +47,29 @@ const UpdateDataComponent = () => {
     fetchData();
   }, [uid]);
 
+  useEffect(() => {
+    const fetchToken = async () => {
+      const navigatetoken = localStorage.getItem("token");
+      try {
+        const response = await fetch('http://localhost:3001/gettoken', {
+          headers: {
+            Authorization: navigatetoken,
+          },
+        });
+        if (!response.ok) {
+          console.log('Failed to fetch token');
+          navigate('/login');
+        }
+        const data = await response.text();
+        console.log('Token verification response:', data);
+      } catch (error) {
+        console.error('Error fetching token:', error);
+      }
+    };
+
+    fetchToken();
+  }, [navigate]);
+
   const handleUpdate = async () => {
     try {
       const formData = new FormData();

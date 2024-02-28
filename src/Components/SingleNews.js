@@ -46,6 +46,29 @@ const SingleNews = () => {
         fetchData();
     }, [newsid]);
 
+    useEffect(() => {
+        const fetchToken = async () => {
+            const navigatetoken = localStorage.getItem("token");
+            try {
+                const response = await fetch('http://localhost:3001/gettoken', {
+                    headers: {
+                        Authorization: navigatetoken,
+                    },
+                });
+                if (!response.ok) {
+                    console.log('Failed to fetch token');
+                    navigate('/login');
+                }
+                const data = await response.text();
+                console.log('Token verification response:', data);
+            } catch (error) {
+                console.error('Error fetching token:', error);
+            }
+        };
+
+        fetchToken();
+    }, [navigate]);
+
     return (
         <>
             <SideComponent />
@@ -60,11 +83,11 @@ const SingleNews = () => {
                             <div className="col-10">
                                 <img src={`https://public.lazybluffer.online/${data.nfile}`} alt="Not Found" />
                                 <h1>Trending</h1>
-                                <p>{data.trending ? (<div>true</div>): (<div>false</div>)}</p>
+                                <p>{data.trending ? (<div>true</div>) : (<div>false</div>)}</p>
                                 <h1>Title</h1>
                                 <p>{data.title}</p>
                                 <h1>Category</h1>
-                                <p>{data.category ? (<div>data.category</div>): (<div>no category define</div>)}</p>
+                                <p>{data.category ? (<div>data.category</div>) : (<div>no category define</div>)}</p>
                                 <h1>Description</h1>
                                 <p>{data.desc}</p>
                                 <h1>Content</h1>
