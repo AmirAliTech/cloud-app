@@ -84,11 +84,11 @@ const MyComponent = () => {
               <p>{error}</p>
             ) : (
               <div className="container my-3">
-                <div className="w-100">
+                <div className="row">
                   {data.map((item) => (
-                    <div key={item._id} className="w-25">
-                      <div className="d-flex flex-column  border-1" style={{ width: "18rem" }}>
-                        <img src={`https://public.lazybluffer.online/${item.nfile}`} className="card-img-top max-img-width" alt={item.title} />
+                    <div key={item._id} className="col ">
+                      <div className="  border-1 card" style={{ width: "18rem" }}>
+                        <img src={`https://public.lazybluffer.online/${item.nfile}`} className=""  alt={item.title} />
                         <div className="card-body">
                           <h5 className="d-flex align-items-center ">
                             Trending: {item.trending ? (<div className="text-primary">true</div>) : (<div className="text-danger">false</div>)}
